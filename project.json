@@ -1,18 +1,18 @@
 {
-    "project_type": "javascript",
-
-    "debugMode" : 1,
-    "showFPS" : true,
-    "frameRate" : 60,
-    "noCache" : true,
-    "id" : "gameCanvas",
-    "renderMode" : 0,
-    "engineDir":"frameworks/cocos2d-html5",
-
-    "modules" : ["core"],
-
-    "jsList" : [
-        "src/resource.js",
-        "src/app.js"
-    ]
+  "project_type": "javascript",
+  "debugMode": 1,
+  "showFPS": true,
+  "frameRate": 60,
+  "noCache": true,
+  "id": "gameCanvas",
+  "renderMode": 0,
+  "engineDir": "frameworks/cocos2d-html5",
+  "modules": [
+    "core"
+  ],
+  "jsList": [
+    "src/resource.js",
+    "src/scenes/GameScene.js",
+    "src/scenes/StartScene.js"
+  ]
 }

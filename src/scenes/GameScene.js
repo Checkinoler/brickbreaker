@@ -1,6 +1,6 @@
 "use strict";
 
-var MainLayer = cc.Layer.extend({
+var GameLayer = cc.Layer.extend({
     ctor: function () {
         this._super();
         var size = cc.winSize;
@@ -12,8 +12,10 @@ var MainLayer = cc.Layer.extend({
 var GameScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
-        
-        var layer = new MainLayer();
+
+        alert("Now in GameScene!");
+
+        var layer = new GameLayer();
         this.addChild(layer);
     }
 });
