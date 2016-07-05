@@ -8,11 +8,11 @@
   "renderMode": 0,
   "engineDir": "frameworks/cocos2d-html5",
   "modules": [
-    "core"
+    "core",
+    "shape-nodes"
   ],
   "jsList": [
     "src/resource.js",
-    "src/scenes/GameScene.js",
-    "src/scenes/StartScene.js"
+    "src/scenes/GameScene.js"
   ]
 }
