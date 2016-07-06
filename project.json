@@ -9,7 +9,8 @@
   "engineDir": "frameworks/cocos2d-html5",
   "modules": [
     "core",
-    "shape-nodes"
+    "shape-nodes",
+    "actions"
   ],
   "jsList": [
     "src/resource.js",

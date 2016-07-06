@@ -2,7 +2,8 @@
 
 var res = {
     Pause_png: "res/pause.png",
-    StartMenu_png: "res/startmenu.png"
+    StartMenu_png: "res/startmenu.png",
+    Ball_png: "res/ball.png"
 };
 
 var g_resources = [

@@ -109,11 +109,17 @@
                 <file name="cocos2d/shape-nodes/CCDrawNode.js"/>
                 <file name="cocos2d/shape-nodes/CCDrawNodeCanvasRenderCmd.js"/>
                 <file name="cocos2d/shape-nodes/CCDrawNodeWebGLRenderCmd.js"/>
+                <file name="cocos2d/actions/CCAction.js"/>
+                <file name="cocos2d/actions/CCActionInterval.js"/>
+                <file name="cocos2d/actions/CCActionInstant.js"/>
+                <file name="cocos2d/actions/CCActionCamera.js"/>
+                <file name="cocos2d/actions/CCActionEase.js"/>
+                <file name="cocos2d/actions/CCActionCatmullRom.js"/>
+                <file name="cocos2d/actions/CCActionTween.js"/>
 
             </sources>
             <sources dir="${basedir}">
                 <file name="src/resource.js"/>
-                <file name="src/Menu.js"/>
                 <file name="src/scenes/GameScene.js"/>
                 <file name="main.js"/>
 
