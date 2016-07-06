@@ -1,6 +1,9 @@
 "use strict";
 
-var res = {};
+var res = {
+    Pause_png: "res/pause.png",
+    StartMenu_png: "res/startmenu.png"
+};
 
 var g_resources = [
     {

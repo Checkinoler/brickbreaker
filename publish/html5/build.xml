@@ -2,7 +2,7 @@
 <project name="Javascript compress project" basedir="C:\Users\Checkinoler\Documents\GitHub\brickbreaker" default="compile">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
-             classpath="C:\Users\Checkinoler\Desktop\cocos2d-x-3.11.1\tools\cocos2d-console\plugins\plugin_compile\build_web/bin/compiler-1.7.jar"/>
+             classpath="C:\Cocos\Cocos2d-x\cocos2d-x-3.10\tools\cocos2d-console\plugins\plugin_compile\build_web/bin/compiler-1.7.jar"/>
 
     <target name="compile">
         <jscomp compilationLevel="advanced" 
@@ -113,6 +113,7 @@
             </sources>
             <sources dir="${basedir}">
                 <file name="src/resource.js"/>
+                <file name="src/Menu.js"/>
                 <file name="src/scenes/GameScene.js"/>
                 <file name="main.js"/>
 
