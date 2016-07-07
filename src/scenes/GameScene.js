@@ -33,8 +33,39 @@ var StartLayer = cc.Layer.extend({
             y: size.height / 2,
             scale: 0
         });
-        Menu.runAction(cc.scaleTo(0.3, 1));
+        Menu.runAction(cc.scaleTo(0.3, 1).easing(cc.easeQuarticActionOut()));
         StartMenu.addChild(Menu, 0);
+
+        var Title = new cc.LabelTTF("BrickBreaker", "Avenir Next", 72);
+        Menu.addChild(Title, 0);
+        Title.setFontFillColor(cc.color(0, 0, 0));
+        Title.attr({
+            x: Menu.width / 2,
+            y: Menu.height - 128
+        });
+
+        var SubTitle = new cc.LabelTTF("Highscore: 0", "Avenir Next", 40);
+        Menu.addChild(SubTitle, 0);
+        SubTitle.setFontFillColor(cc.color(0, 0, 0));
+        SubTitle.attr({
+            x: Menu.width / 2,
+            y: Menu.height - 240
+        });
+
+        var GameStartButton = new cc.Sprite(res.Button1_png);
+        Menu.addChild(GameStartButton, 0);
+        GameStartButton.attr({
+            x: Menu.width / 2,
+            y: Menu.height / 2 - 100
+        });
+
+        var GameStartLabel = new cc.LabelTTF("New Game", "Avenir Next", 40);
+        Menu.addChild(GameStartLabel, 1);
+        GameStartLabel.setFontFillColor(cc.color(0, 0, 0));
+        GameStartLabel.attr({
+            x: Menu.width / 2,
+            y: Menu.height / 2 - 100
+        });
 
         return true;
     }

@@ -64,7 +64,7 @@ cc.game.onStart = function () {
     cc.view.adjustViewPort(true);
     cc.view.enableAutoFullScreen(true);
     // Setup the resolution policy and design resolution size
-    cc.view.setDesignResolutionSize(640, 960, cc.ResolutionPolicy.FIXED_WIDTH);
+    cc.view.setDesignResolutionSize(640, 960, cc.ResolutionPolicy.SHOW_ALL);
     // Instead of set design resolution, you can also set the real pixel resolution size
     // Uncomment the following line and delete the previous line.
     // cc.view.setRealPixelResolution(640, 960, cc.ResolutionPolicy.SHOW_ALL);
@@ -72,6 +72,9 @@ cc.game.onStart = function () {
     cc.view.resizeWithBrowserSize(true);
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
+        for (var img in res) {
+            res[img] = cc.textureCache.addImage(res[img]);
+        }
         cc.director.runScene(new GameScene());
     }, this);
 };
