@@ -1,17 +1,37 @@
 "use strict";
 
-var Listener = {
+function containsPoint(pPoint, pBox) {
+    return (pPoint.x >= pBox.x && pPoint.x <= (pBox.x + pBox.width) && pPoint.y >= pBox.y && pPoint.y <= (pBox.y + pBox.height));
+}
+
+var ButtonListener = {
     obj: null,
     event: cc.EventListener.TOUCH_ONE_BY_ONE,
-    onTouchBegan: function () {
+    isHovering: function (touch) {
+        var size = cc.visibleRect;
+        var box = {
+            x: size.width / 2 - 190.5,
+            y: size.height / 2 - 145,
+            width: 381,
+            height: 90
+        };
+        return containsPoint(touch.getLocation(), box);
+    },
+    onTouchBegan: function (touch) {
+        if (this.isHovering(touch)) {
+            this.obj.visible = false;
+        }
         return true;
     },
     onTouchMoved: function (touch) {
-        var loc = touch.getLocation();
-        this.obj.attr({
-            x: loc.x,
-            y: loc.y
-        });
+        if (this.isHovering(touch) === this.obj.visible) {
+            this.obj.visible = !this.obj.visible;
+        }
+    },
+    onTouchEnded: function (touch) {
+        if (this.isHovering(touch)) {
+            this.obj.parent.parent.parent.parent.removeFromParent();
+        }
     }
 };
 
@@ -52,12 +72,15 @@ var StartLayer = cc.Layer.extend({
             y: Menu.height - 240
         });
 
-        var GameStartButton = new cc.Sprite(res.Button1_png);
+        var GameStartButton = new cc.Node();
         Menu.addChild(GameStartButton, 0);
         GameStartButton.attr({
             x: Menu.width / 2,
-            y: Menu.height / 2 - 100
+            y: Menu.height / 2 - 100 - 4
         });
+        var Button1 = new cc.Sprite(res.Button1_png);
+        GameStartButton.addChild(Button1, 1);
+        GameStartButton.addChild(new cc.Sprite(res.Button2_png), 0);
 
         var GameStartLabel = new cc.LabelTTF("New Game", "Avenir Next", 40);
         Menu.addChild(GameStartLabel, 1);
@@ -67,29 +90,34 @@ var StartLayer = cc.Layer.extend({
             y: Menu.height / 2 - 100
         });
 
+        ButtonListener.obj = Button1;
+        cc.eventManager.addListener(ButtonListener, GameStartButton);
+
         return true;
     }
 });
 
 var GameLayer = cc.LayerColor.extend({
-    ctor: function () {
-        this._super(cc.color(41, 46, 55));
-        var size = cc.visibleRect;
+        ctor: function () {
+            this._super(cc.color(41, 46, 55));
+            var size = cc.visibleRect;
 
-        var topBakcground = new cc.DrawNode();
-        this.addChild(topBakcground);
-        topBakcground.drawRect(cc.p(0, size.height - 180), cc.p(size.width, size.height), cc.color(28, 28, 28), 0, cc.color(0, 0, 0));
-        
-        var Ball = new cc.Sprite(res.Ball_png);
-        this.addChild(Ball);
-        Ball.scale = 0.5;
-        Listener.obj = Ball;
+            var topBakcground = new cc.DrawNode();
+            this.addChild(topBakcground);
+            topBakcground.drawRect(cc.p(0, size.height - 180), cc.p(size.width, size.height), cc.color(28, 28, 28), 0, cc.color(0, 0, 0));
 
-        cc.eventManager.addListener(Listener, this);
+            var Paddle = new cc.Sprite(res.Paddle_png);
+            this.addChild(Paddle);
+            Paddle.attr({
+                x: size.width / 2,
+                y: 140,
+                scale: 0.7
+            });
 
-        return true;
-    }
-});
+            return true;
+        }
+    })
+    ;
 
 var GameScene = cc.Scene.extend({
     onEnter: function () {
